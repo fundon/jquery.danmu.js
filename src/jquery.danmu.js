@@ -279,15 +279,15 @@ var cyntax = {
       var nowCount = 0;
       var nowSecCount = 0;
       //格式控制
-      this.rowCount = parseInt(me.height / options.FontSizeBig);
-      if (me.options.SubtitleProtection) {
+      this.rowCount = parseInt(me.height / options.fontSizeBig);
+      if (me.options.subtitleProtection) {
         me.rowCount = me.rowCount - 3;
       }
       this.rows = [];
       this.topRows=[];
       this.bottomRows=[];
       this.initRows = function (me) {
-        // me.rowCount = parseInt(me.height / options.FontSizeBig);
+        // me.rowCount = parseInt(me.height / options.fontSizeBig);
         for (var i = 0; i < me.rowCount; i++) {
           me.rows[i] = 0;
           me.topRows[i]=0;
@@ -360,10 +360,10 @@ var cyntax = {
             me.preTime = $(element).data("nowTime");
             //更新行数
             var rowCOld = me.rowCount;
-            me.rowCount = parseInt(me.height / options.FontSizeBig);
+            me.rowCount = parseInt(me.height / options.fontSizeBig);
             setTimeout(me.checkRow(me), 0);
             //字幕保护
-            if (me.options.SubtitleProtection) {
+            if (me.options.subtitleProtection) {
               me.rowCount = me.rowCount - 3;
             }
             if (rowCOld !== 0 && me.rowCount !== rowCOld) {
@@ -387,12 +387,11 @@ var cyntax = {
                 .css({
                   "color": danmaku.color
                   , "text-shadow": " 0px 0px 2px #000000"
-                  , "-moz-opacity": $(element).data("opacity")
                   , "opacity": $(element).data("opacity")
                   , "white-space": "nowrap"
-                  , "font-weight": options.FontWeight
-                  , "font-family": options.FontFamily
-                  , "font-size": options.FontSizeBig
+                  , "font-weight": options.fontWeight
+                  , "font-family": options.fontFamily
+                  , "font-size": options.fontSizeBig
                 });
                 if (danmaku.color < "#777777")
                 $("#" + me.id + "tempDanmaku").css({
@@ -410,9 +409,9 @@ var cyntax = {
                     var row = me.getRow(me);
                     me.rows[row] = flyTmpName;
                     danmaku["row"] = row;
-                    var top_local = (row) * options.FontSizeBig;
+                    var top_local = (row) * options.fontSizeBig;
                     danmaku["width"] = $("#" + flyTmpName).width();
-                    // var offsetLeft = parseInt(Math.random() * 2 * options.FontSizeBig);
+                    // var offsetLeft = parseInt(Math.random() * 2 * options.fontSizeBig);
                     var left_local = $("#" + me.id).width();
                     $("#" + flyTmpName).css({
                       "width": $("#" + flyTmpName).width()
@@ -439,7 +438,7 @@ var cyntax = {
                 var topTmpId = me.id + "top" + parseInt(10000 * Math.random()).toString();
                 $("#" + me.id + "tempDanmaku").attr("id", topTmpId);
                 var temRow=me.getTopRow(me);
-                $(element).data("topSpace", options.FontSizeBig*temRow);
+                $(element).data("topSpace", options.fontSizeBig*temRow);
                 me.topRows[temRow]=1;
                 $("#" + topTmpId).css({
                   "width": "100%"
@@ -460,7 +459,7 @@ var cyntax = {
               var bottomTmpId = me.id + "bottom" + parseInt(10000 * Math.random()).toString();
               $("#" + me.id + "tempDanmaku").attr("id", bottomTmpId);
               var temRow=me.getBottomRow(me);
-              $(element).data("bottomSpace", options.FontSizeBig*temRow);
+              $(element).data("bottomSpace", options.fontSizeBig*temRow);
               me.bottomRows[temRow]=1;
               $("#" + bottomTmpId).css({
                 "width": options.width
@@ -508,10 +507,10 @@ Danmu.DEFAULTS = {
   danmuList: {},
   defaultFontColor: "#FFFFFF",
   fontSizeSmall: 16,
-  FontSizeBig: 24,
+  fontSizeBig: 24,
   opacity: "0.9",
   topBottomDanmuTime: 6000,
-  SubtitleProtection: false,
+  subtitleProtection: false,
   positionOptimize: false,
   maxCountInScreen: 40,
   maxCountPerSec: 10
