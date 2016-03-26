@@ -383,7 +383,7 @@ var cyntax = {
                 var a_danmu = "<span class='danmaku' id='" + me.id + "tempDanmaku'></span>";
                 $(element).append(a_danmu);
                 var danmaku = danmus[i];
-                $("#" + me.id + "tempDanmaku").text(danmaku.text)
+                $("#" + me.id + "tempDanmaku").html(danmaku.text)
                 .css({
                   "color": danmaku.color
                   , "text-shadow": " 0px 0px 2px #000000"
